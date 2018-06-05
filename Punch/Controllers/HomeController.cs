@@ -21,7 +21,7 @@ namespace Punch.Controllers
             _clockService = new ClockService();
         }
 
-        [Route("", Name = "SplashPage")]
+        [Route("", Name = "Index")]
         public ActionResult Index()
         {
             return View();
