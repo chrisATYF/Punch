@@ -207,13 +207,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806042126274_InitialMigation.cs" />
-    <Compile Include="Migrations\201806042126274_InitialMigation.Designer.cs">
-      <DependentUpon>201806042126274_InitialMigation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806051519128_NewClockInOutTable.cs" />
-    <Compile Include="Migrations\201806051519128_NewClockInOutTable.Designer.cs">
-      <DependentUpon>201806051519128_NewClockInOutTable.cs</DependentUpon>
+    <Compile Include="Migrations\201806052312404_InitialMigration.cs" />
+    <Compile Include="Migrations\201806052312404_InitialMigration.Designer.cs">
+      <DependentUpon>201806052312404_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -288,14 +284,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806042126274_InitialMigation.resx">
-      <DependentUpon>201806042126274_InitialMigation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806051519128_NewClockInOutTable.resx">
-      <DependentUpon>201806051519128_NewClockInOutTable.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -307,6 +295,11 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201806052312404_InitialMigration.resx">
+      <DependentUpon>201806052312404_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
