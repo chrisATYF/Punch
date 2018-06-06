@@ -207,17 +207,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806052312404_InitialMigration.cs" />
-    <Compile Include="Migrations\201806052312404_InitialMigration.Designer.cs">
-      <DependentUpon>201806052312404_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201806060054294_ReDoOverNow.cs" />
+    <Compile Include="Migrations\201806060054294_ReDoOverNow.Designer.cs">
+      <DependentUpon>201806060054294_ReDoOverNow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806060128209_AddedPunched.cs" />
+    <Compile Include="Migrations\201806060128209_AddedPunched.Designer.cs">
+      <DependentUpon>201806060128209_AddedPunched.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ClockIn.cs" />
-    <Compile Include="Models\ClockOut.cs" />
     <Compile Include="Models\ClockViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PunchedClock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ClockService.cs" />
     <Compile Include="Services\Interfaces\IClock.cs" />
@@ -297,8 +300,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806052312404_InitialMigration.resx">
-      <DependentUpon>201806052312404_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806060054294_ReDoOverNow.resx">
+      <DependentUpon>201806060054294_ReDoOverNow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806060128209_AddedPunched.resx">
+      <DependentUpon>201806060128209_AddedPunched.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -8,10 +8,8 @@ namespace Punch.Models
     public class ClockViewModel
     {
         public int Id { get; set; }
-        public ClockIn ClockIn { get; set; }
-        public List<ClockIn> ClockInList { get; set; }
-        public ClockOut ClockOut { get; set; }
-        public List<ClockOut> ClockOutList { get; set; }
+        public PunchedClock PunchClocks { get; set; }
+        public List<PunchedClock> PunchClockList { get; set; }
         public bool IsClockedIn { get; set; }
     }
 }

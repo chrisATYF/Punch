@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -16,6 +18,8 @@ namespace Punch.Models
             // Add custom user claims here
             return userIdentity;
         }
+        
+        public ICollection<PunchedClock> PunchedClocksIn { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -25,8 +29,12 @@ namespace Punch.Models
         {
         }
 
-        public DbSet<ClockIn> ClockIn { get; set; }
-        public DbSet<ClockOut> ClockOut { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+        
+        public DbSet<PunchedClock> PunchedClocks { get; set; }
 
         public static ApplicationDbContext Create()
         {

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using HashidsNet;
 using Punch.Models;
 using Punch.Services;
+using Microsoft.AspNet.Identity;
 
 namespace Punch.Controllers
 {
@@ -31,12 +32,18 @@ namespace Punch.Controllers
         }
         
         [Authorize]
-        [Route("PunchClock/{id}", Name = "PunchClock")]
-        public ActionResult PunchClock(string id)
+        [Route("PunchClock", Name = "PunchClock")]
+        public ActionResult PunchClock()
         {
-            
-            
-            ViewData["Message"] = "Clock In";
+            var userId = User.Identity.GetUserId();
+            var model = _context.PunchedClocks.FirstOrDefault(c => c.ApplicationUserId == userId && !c.PunchOut.HasValue);
+            if (model == null)
+            {
+                ViewData["Message"] = "Clock In";
+                return View();
+            }
+
+            ViewData["Message"] = "Clock Out";
 
             return View();
         }
@@ -44,9 +51,19 @@ namespace Punch.Controllers
         [Authorize]
         [HttpPost]
         [Route("PunchClock", Name = "PunchClockPost")]
-        public ActionResult PunchClock(ClockViewModel model)
+        public ActionResult PunchClock(int id)
         {
-            
+            var userId = User.Identity.GetUserId();
+            var model = _context.PunchedClocks.FirstOrDefault(c => c.ApplicationUserId == userId && !c.PunchOut.HasValue);
+            if (model == null)
+            {
+                model.PunchOut = DateTime.UtcNow;
+            }
+
+            model.PunchIn = DateTime.UtcNow;
+
+            _context.PunchedClocks.Add(model);
+            _context.SaveChanges();
 
             return View();
         }

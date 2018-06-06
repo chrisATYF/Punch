@@ -16,59 +16,61 @@ namespace Punch.Services
             _context = new ApplicationDbContext();
         }
 
-        public ClockIn ClockIn(ClockViewModel model)
+        public PunchedClock ClockIn(ClockViewModel model)
         {
-            var clockIn = new ClockIn
+            var clockIn = new PunchedClock
             {
-                Id = model.ClockIn.Id,
-                PunchIn = model.ClockIn.PunchIn
+                Id = model.PunchClocks.Id,
+                PunchIn = model.PunchClocks.PunchIn
             };
 
-            _context.ClockIn.Add(clockIn);
+            _context.PunchedClocks.Add(clockIn);
             _context.SaveChanges();
 
             return clockIn;
         }
 
-        public ClockIn GetClockIn(string id)
+        public PunchedClock GetClockIn(int id)
         {
-            var clockIn = _context.ClockIn.FirstOrDefault(c => c.Id == id);
-
-            return clockIn;
+            throw new NotImplementedException();
         }
 
-        public ClockOut ClockOut(ClockViewModel model)
+        public ClockViewModel GetClockList(int id)
         {
-            var clockOut = new ClockOut
-            {
-                Id = model.ClockOut.Id,
-                PunchOut = model.ClockOut.PunchOut
-            };
-
-            _context.ClockOut.Add(clockOut);
-            _context.SaveChanges();
-
-            return clockOut;
+            throw new NotImplementedException();
         }
 
-        public ClockOut GetClockOut(string id)
-        {
-            var clockOut = _context.ClockOut.FirstOrDefault(c => c.Id == id);
+        //public PunchedClock ClockIn(ClockViewModel model)
+        //{
+        //    var clockIn = new PunchedClock
+        //    {
+        //        Id = model.PunchClocks.Id,
+        //        PunchIn = model.PunchClocks.PunchIn
+        //    };
 
-            return clockOut;
-        }
+        //    _context.PunchedClocks.Add(clockIn);
+        //    _context.SaveChanges();
 
-        public ClockViewModel GetClockList(string id)
-        {
-            var clockInList = _context.ClockIn.OrderByDescending(c => c.Id == id).ToList();
-            var clockOutList = _context.ClockOut.OrderByDescending(c => c.Id == id).ToList();
-            var model = new ClockViewModel
-            {
-                ClockInList = clockInList,
-                ClockOutList = clockOutList
-            };
+        //    return clockIn;
+        //}
 
-            return model;
-        }
+        //public PunchedClock GetClockIn(int id)
+        //{
+        //    var clockIn = _context.PunchedClocks.FirstOrDefault(c => c.Id == id);
+
+        //    return clockIn;
+        //}
+
+        //public ClockViewModel GetClockList(int id)
+        //{
+        //    var clockInList = _context.PunchClocks.OrderByDescending(c => c.Id == id).ToList();
+        //    var model = new ClockViewModel
+        //    {
+        //        PunchClockList = clockInList
+        //    };
+
+        //    return model;
+        //}
+
     }
 }
