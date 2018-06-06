@@ -12,5 +12,6 @@ namespace Punch.Models
         public ApplicationUser User { get; set; }
         public DateTime PunchIn { get; set; }
         public DateTime? PunchOut { get; set; }
+        public bool IsClockedIn = false;
     }
 }

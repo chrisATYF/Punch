@@ -215,6 +215,18 @@
     <Compile Include="Migrations\201806060128209_AddedPunched.Designer.cs">
       <DependentUpon>201806060128209_AddedPunched.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806061748295_AddingIsManager.cs" />
+    <Compile Include="Migrations\201806061748295_AddingIsManager.Designer.cs">
+      <DependentUpon>201806061748295_AddingIsManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806061836154_EditedPunhedClocks.cs" />
+    <Compile Include="Migrations\201806061836154_EditedPunhedClocks.Designer.cs">
+      <DependentUpon>201806061836154_EditedPunhedClocks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806062101256_FixesMigration.cs" />
+    <Compile Include="Migrations\201806062101256_FixesMigration.Designer.cs">
+      <DependentUpon>201806062101256_FixesMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ClockViewModel.cs" />
@@ -263,7 +275,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\PunchClock.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -305,6 +316,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806060128209_AddedPunched.resx">
       <DependentUpon>201806060128209_AddedPunched.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806061748295_AddingIsManager.resx">
+      <DependentUpon>201806061748295_AddingIsManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806061836154_EditedPunhedClocks.resx">
+      <DependentUpon>201806061836154_EditedPunhedClocks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806062101256_FixesMigration.resx">
+      <DependentUpon>201806062101256_FixesMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

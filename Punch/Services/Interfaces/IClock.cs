@@ -8,8 +8,9 @@ namespace Punch.Services.Interfaces
 {
     public interface IClock
     {
-        ClockViewModel GetClockList(int id);
-        PunchedClock ClockIn(ClockViewModel model);
-        PunchedClock GetClockIn(int id);
+        PunchedClock GetClock(int id);
+        PunchedClock GetClockByUser(string id);
+        PunchedClock ClockIn(string userId, DateTime time);
+        PunchedClock ClockOut(int id, DateTime time);
     }
 }
