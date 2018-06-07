@@ -30,11 +30,17 @@ namespace Punch.Controllers
         {
             var userId = User.Identity.GetUserId();
             var clockinsList = _context.PunchedClocks.OrderByDescending(c => c.ApplicationUserId == userId).Take(5).ToList();
+            User.IsInRole("AppAdmin");
+
+            if (User.IsInRole("AppAdmin"))
+            {
+                return RedirectToRoute("PunchClock");
+            }
 
             return View(clockinsList);
         }
         
-        [Authorize]
+        [Authorize(Roles = "AppAdmin,User")]
         [Route("PunchClock", Name = "PunchClock")]
         public ActionResult PunchClock()
         {

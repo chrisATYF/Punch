@@ -227,6 +227,10 @@
     <Compile Include="Migrations\201806062101256_FixesMigration.Designer.cs">
       <DependentUpon>201806062101256_FixesMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806070039474_AddingRoles.cs" />
+    <Compile Include="Migrations\201806070039474_AddingRoles.Designer.cs">
+      <DependentUpon>201806070039474_AddingRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ClockViewModel.cs" />
@@ -325,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806062101256_FixesMigration.resx">
       <DependentUpon>201806062101256_FixesMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806070039474_AddingRoles.resx">
+      <DependentUpon>201806070039474_AddingRoles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
