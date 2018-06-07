@@ -6,18 +6,20 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center" id="ClockButton">
-            @using (Html.BeginForm("PunchClock", "Home", new { id = Model.Id }))
+            @if (Model.PunchIn == DateTime.MinValue)
             {
-                if (Model.IsClockedIn)
+                using (Html.BeginForm("PunchClockIn", "Home"))
                 {
-                    @Html.HiddenFor(a => a.Id)
                     <button class="btn btn-lg btn-primary" type="submit" id="ClockButton">@ViewData["Message"]</button>
                 }
-
-                if (!Model.IsClockedIn)
+            }
+            else
+            {
+                using (Html.BeginForm("PunchClockOut", "Home"))
                 {
-                    @Html.HiddenFor(a => a.Id);
+                    @Html.HiddenFor(m => m.Id);
                     <button class="btn btn-lg btn-primary" type="submit" id="ClockButton">@ViewData["Message"]</button>
+
                 }
             }
         </div>

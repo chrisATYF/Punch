@@ -8,6 +8,16 @@
     margin-bottom: 5em;
 }
 
+#PunchButton {
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+#PunchHeader {
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;

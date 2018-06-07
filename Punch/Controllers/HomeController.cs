@@ -28,10 +28,7 @@ namespace Punch.Controllers
         [Route("", Name = "Index")]
         public ActionResult Index()
         {
-            // Get logged in user id
             var userId = User.Identity.GetUserId();
-
-            // Get top 5 of the user's clocks
             var clockinsList = _context.PunchedClocks.OrderByDescending(c => c.ApplicationUserId == userId).Take(5).ToList();
 
             return View(clockinsList);
@@ -41,22 +38,18 @@ namespace Punch.Controllers
         [Route("PunchClock", Name = "PunchClock")]
         public ActionResult PunchClock()
         {
-            // Get logged in user id
             var userId = User.Identity.GetUserId();
-
-            // Get model if model has no punch out
             var model = _clockService.GetClockByUser(userId);
 
-            // See if the model has a punch out, if so it is null
-            if (model == null || !model.IsClockedIn)
+            if (model == null)
             {
-                // Create new model and set userId and IsClockedIn to false
-                model = new PunchedClock();
+                model = new PunchedClock
+                {
+                    PunchIn = DateTime.MinValue
+                };
 
-                // Set button to read Clock In
                 ViewData["Message"] = "Clock In";
 
-                // Pass the new model to the view to clock in
                 return View(model);
             }
             
@@ -67,32 +60,23 @@ namespace Punch.Controllers
 
         [Authorize]
         [HttpPost]
-        [Route("PunchClock", Name = "PunchClockPost")]
-        public ActionResult PunchClock(int id)
+        [Route("PunchClockIn", Name = "PunchClockInPost")]
+        public ActionResult PunchClockIn()
         {
-            // Get logged in user id
             var userId = User.Identity.GetUserId();
 
-            // Get model by the id
-            var model = _clockService.GetClock(id);
+            _clockService.ClockIn(userId, DateTime.UtcNow);
 
-            // If model.punchOut has a value enter statement
-            if (model == null || model.PunchOut.HasValue)
-            {
-                // If model has a punch out create new punch
-                model = _clockService.ClockIn(userId, DateTime.UtcNow);
+            return RedirectToRoute("Index");
+        }
 
-                _context.PunchedClocks.Add(model);
-                _context.SaveChanges();
-
-                return RedirectToRoute("Index");
-            }
-
-            // Set models punch out
-            model = _clockService.ClockOut(id, DateTime.UtcNow);
-            
-            _context.PunchedClocks.Add(model);
-            _context.SaveChanges();
+        [Authorize]
+        [HttpPost]
+        [Route("PunchClockOut", Name = "PunchClockOutPost")]
+        public ActionResult PunchClockOut(PunchedClock model)
+        {
+            var userId = User.Identity.GetUserId();
+            model = _clockService.ClockOut(model.Id, DateTime.UtcNow);
 
             return RedirectToRoute("Index");
         }

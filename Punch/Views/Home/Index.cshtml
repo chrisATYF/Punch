@@ -1,11 +1,67 @@
-﻿@{
+﻿@model List<Punch.Models.PunchedClock>
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1>Punch</h1>
+            <h1 id="PunchHeader">Punch</h1>
         </div>
     </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <a href="@Url.RouteUrl("PunchClock")" class="btn btn-lg btn-primary" id="PunchButton">Punch In</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                Punch in
+                            </th>
+                            <th>
+                                Punch out
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var punch in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @punch.PunchIn.ToString("F")
+                                    <br />
+                                    <small>
+                                        @punch.PunchInHumanized
+                                    </small>
+                                </td>
+                                <td>
+                                    @if (punch.PunchOut.HasValue)
+                                    {
+                                        @punch.PunchOut.Value.ToString("F")
+                                        <br />
+                                        <small>
+                                            @punch.PunchOutHumanized
+                                        </small>
+                                        <br />
+                                        @punch.PunchSpanHumanized
+                                    }
+                                    else
+                                    {
+                                        <em>Currently clocked in</em>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+
 </div>

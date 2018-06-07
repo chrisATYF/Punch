@@ -25,7 +25,7 @@ namespace Punch.Services
 
         public PunchedClock GetClockByUser(string id)
         {
-            var model = _context.PunchedClocks.FirstOrDefault(c => c.ApplicationUserId == id);
+            var model = _context.PunchedClocks.FirstOrDefault(c => c.ApplicationUserId == id && !c.PunchOut.HasValue);
 
             return model;
         }
@@ -35,9 +35,11 @@ namespace Punch.Services
             var model = new PunchedClock
             {
                 ApplicationUserId = userId,
-                PunchIn = time,
-                IsClockedIn = true
+                PunchIn = time
             };
+
+            _context.PunchedClocks.Add(model);
+            _context.SaveChanges();
 
             return model;
         }
@@ -46,7 +48,8 @@ namespace Punch.Services
         {
             var model = _context.PunchedClocks.FirstOrDefault(c => c.Id == id);
             model.PunchOut = time;
-            model.IsClockedIn = false;
+
+            _context.SaveChanges();
 
             return model;
         }

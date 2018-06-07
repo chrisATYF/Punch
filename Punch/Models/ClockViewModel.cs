@@ -10,7 +10,5 @@ namespace Punch.Models
         public int Id { get; set; }
         public PunchedClock PunchClocks { get; set; }
         public List<PunchedClock> PunchClockList { get; set; }
-        public bool IsClockedIn { get; set; }
-        public bool IsManager { get; set; }
     }
 }
