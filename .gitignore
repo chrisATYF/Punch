@@ -353,3 +353,7 @@ Punch/Migrations/201806062101256_FixesMigration.cs
 Punch/Migrations/201806062101256_FixesMigration.Designer.cs
 Punch/Migrations/201806062101256_FixesMigration.resx
 Punch/Migrations/Configuration.cs
+Punch/Migrations/201806070039474_AddingRoles.cs
+Punch/Migrations/201806070039474_AddingRoles.Designer.cs
+Punch/Migrations/201806070039474_AddingRoles.resx
+Punch/Migrations/Configuration.cs

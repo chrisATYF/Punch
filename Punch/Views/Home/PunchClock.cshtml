@@ -22,6 +22,11 @@
 
                 }
             }
+
+            @if (User.IsInRole("AppAdmin"))
+            {
+                <button>Here you go</button>
+            }
         </div>
     </div>
 </div>
