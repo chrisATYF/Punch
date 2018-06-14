@@ -7,6 +7,7 @@ using HashidsNet;
 using Punch.Models;
 using Punch.Services;
 using Microsoft.AspNet.Identity;
+using System.Threading.Tasks;
 
 namespace Punch.Controllers
 {
@@ -25,8 +26,19 @@ namespace Punch.Controllers
             _hashIds = new Hashids("PunchUrl", 4);
         }
 
+        private async Task<int> DoSomeMathAsync(int a, int b)
+        {
+            return (a + b) * 2;
+        }
+
+        // if void just Task
+        private async Task<bool> MakeADecisionAsync(int value)
+        {
+            return value > 10;
+        }
+
         [Route("", Name = "Index")]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             var userId = User.Identity.GetUserId();
             var clockinsList = _context.PunchedClocks.OrderByDescending(c => c.ApplicationUserId == userId).Take(5).ToList();
@@ -35,6 +47,16 @@ namespace Punch.Controllers
             if (User.IsInRole("AppAdmin"))
             {
                 return RedirectToRoute("PunchClock");
+            }
+
+            var myNumber = await DoSomeMathAsync(10, 3);
+            var myDecision = await MakeADecisionAsync(13);
+
+            var newDecision = MakeADecisionAsync(54).Result;
+
+            if (myDecision)
+            {
+
             }
 
             return View(clockinsList);
