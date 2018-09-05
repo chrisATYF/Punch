@@ -21,7 +21,7 @@ namespace Punch.Migrations
                 var store = new RoleStore<IdentityRole>(context);
                 var manager = new RoleManager<IdentityRole>(store);
                 var role = new IdentityRole { Name = "AppAdmin" };
-
+                
                 manager.Create(role);
             }
             if (!context.Roles.Any(r => r.Name == "User"))

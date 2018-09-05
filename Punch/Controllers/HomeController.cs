@@ -26,16 +26,16 @@ namespace Punch.Controllers
             _hashIds = new Hashids("PunchUrl", 4);
         }
 
-        private async Task<int> DoSomeMathAsync(int a, int b)
-        {
-            return (a + b) * 2;
-        }
+        //private async Task<int> DoSomeMathAsync(int a, int b)
+        //{
+        //    return (a + b) * 2;
+        //}
 
         // if void just Task
-        private async Task<bool> MakeADecisionAsync(int value)
-        {
-            return value > 10;
-        }
+        //private async Task<bool> MakeADecisionAsync(int value)
+        //{
+        //    return value > 10;
+        //}
 
         [Route("", Name = "Index")]
         public async Task<ActionResult> Index()
